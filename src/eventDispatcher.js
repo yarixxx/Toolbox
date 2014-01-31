@@ -5,7 +5,7 @@ function EventDispatcher() {
     return events[event];
   }
 
-  var publicMethods = {
+  return {
     removeEventListener: function(event, callback) {
       for (var i = 0; i < events[event].length; i++) {
         if (events[event][i] === callback) {
@@ -19,15 +19,14 @@ function EventDispatcher() {
       }
       events[event].push(callback);
     },
-    triggerEvent: function (event) {
+    triggerEvent: function(event, parameters) {
       var handlers = getEventHandlers(event);
       if (handlers) {
         for (var key in handlers) {
           var callback = handlers[key];
-          callback();
+          callback(parameters);
         };
       }
     }
-  };
-  return publicMethods;
+  }
 }
