@@ -7,7 +7,24 @@ It helps to organize interaction between different parts of the system without s
 * `removeEventListener` - to stop listening
 
 ## Deferred
-TODO
+Simple implementation of Deferred helps to work with continues callback performing.
+* `then` - add callback
+* `next` - call the oldest callback
+
+## Template
+Template could be created with the following code:
+
+`var tpl = new Template("<{tagName} {property}='{propertyValue}'/>");`
+
+to render new string using this template
+
+`var string = tpl.render({tagName:"a", property: "href", propertyValue:"http//github.com/"});`
 
 ## UrlRetriever
-TODO
+To retrieve result from any URL create UrlRetriever object:
+
+`var ur = UrlRetriever("http://github.com/{userName}");`
+
+then provide context, parameters and callback:
+
+`ur.run(this, {userName:"yarixxx"}, function(result) { console.log(result); });`
