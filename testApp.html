@@ -1,16 +1,19 @@
 <!doctype html>
 <html>
 <head>
-	<title>Weather monitor</title>
-	<script src="src/EventDispatcher.js"></script>
-    <script src="src/Template.js"></script>
-    <script src="src/Deferred.js"></script>
-    <script src="src/UrlRetriever.js"></script>
-	<script>
-		window.addEventListener("load", function() {
-			var eventDispatcher = new EventDispatcher();
-		}
-	</script>
+  <title>Weather monitor</title>
+  <script src="src/EventDispatcher.js"></script>
+  <script src="src/Template.js"></script>
+  <script src="src/Deferred.js"></script>
+  <script src="src/UrlRetriever.js"></script>
+  <script src="src/SimpleView.js"></script>
+  <script src="src/MyView.js"></script>
+  <script>
+    window.addEventListener("load", function() {
+      var eventDispatcher = new EventDispatcher();
+      var dataMonitorView = new MyView("#dataMonitor");
+    }
+  </script>
 </head>
 <body>
 
