@@ -12,7 +12,8 @@
     window.addEventListener("load", function() {
       var eventDispatcher = new EventDispatcher();
       var dataMonitorView = new MyView("#dataMonitor");
-    }
+	  dataMonitorView.publishFields({ day: 33, temperature: 22 });
+    });
   </script>
 </head>
 <body>
@@ -25,7 +26,7 @@
         <table>
         </table>
     </section>
-	
+
 </article>
 
 </body>
