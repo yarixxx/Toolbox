@@ -8,11 +8,14 @@
   <script src="src/UrlRetriever.js"></script>
   <script src="src/SimpleView.js"></script>
   <script src="src/MyView.js"></script>
+  <script src="src/MyController.js"></script>
   <script>
     window.addEventListener("load", function() {
       var eventDispatcher = new EventDispatcher();
       var dataMonitorView = new MyView("#dataMonitor");
-      dataMonitorView.publishFields({ day: 33, temperature: 22 });
+	  var dataMonitorController = new MyController();
+	  dataMonitorController.view = dataMonitorView;
+	  dataMonitorController.run();
     });
   </script>
 </head>
