@@ -5,7 +5,7 @@ function UrlRetriever(urlTemplate) {
   this.run = function(context, parameters, callback) {
     http.onreadystatechange = function() {
       if (http.readyState == 4 && http.status == 200) {
-        callback.call(context, http.responseText);
+        callback.call(context,  JSON.parse(http.responseText));
       }
     }
     http.open("GET", _urlTemplate.render(parameters), true);
