@@ -1,32 +1,56 @@
-function EventDispatcher() {
-  var events = {};
-  
-  function getEventHandlers(event) {
-    return events[event];
-  }
+/**
+ * Creates a new instance of EventDispatcher
+ * 
+ * @constructor
+ * @returns {EventDispatcher}
+ */
+EventDispatcher = function() {
+  this.events = {};
+};
 
-  return {
-    removeEventListener: function(event, callback) {
-      for (var i = 0; i < events[event].length; i++) {
-        if (events[event][i] === callback) {
-          events[event].splice(i,1);
-        }
-      }
-    },
-    addEventListener: function(event, callback) {
-      if (!events[event]) {
-        events[event] = [];
-      }
-      events[event].push(callback);
-    },
-    triggerEvent: function(event, parameters) {
-      var handlers = getEventHandlers(event);
-      if (handlers) {
-        for (var key in handlers) {
-          var callback = handlers[key];
-          callback(parameters);
-        };
-      }
+/**
+ * Adds callback to the specified event
+ * 
+ * @param event {String}
+ * @param callback {Function}
+ */
+EventDispatcher.prototype.addEventListener = function(event, callback) {
+  if (!this.events[event]) {
+    this.events[event] = [];
+  }
+  this.events[event].push(callback);
+};
+
+/**
+ * Triggers event with the provided parameters
+ * 
+ * @param event {String}
+ * @param parameters
+ */
+EventDispatcher.prototype.triggerEvent = function(event, parameters) {
+  var handlers = this.getEventHandlers(event);
+  if (handlers) {
+    for (var key in handlers) {
+      var callback = handlers[key];
+      callback(parameters);
+    };
+  };
+};
+
+/**
+ * Removes callback from the selected event
+ * 
+ * @param event {String}
+ * @param callback {Function}
+ */
+EventDispatcher.prototype.removeEventListener = function(event, callback) {
+  for (var i = 0; i < this.events[event].length; i++) {
+    if (this.events[event][i] === callback) {
+      this.events[event].splice(i,1);
     }
   }
-}
+};
+
+EventDispatcher.prototype.getEventHandlers = function(event) {
+  return this.events[event];
+};
