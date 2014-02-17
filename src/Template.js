@@ -6,7 +6,7 @@
  * @returns {Cart.Template}
  */
 
-Cart.Template = function(template) {
+Template = function(template) {
   this._tpl = template;
 };
 
@@ -16,7 +16,7 @@ Cart.Template = function(template) {
  * @param data {Object}
  * @returns {String}
  */
-Cart.Template.prototype.render = function(data) {
+Template.prototype.render = function(data) {
   var result = this._tpl;
   for (var key in data) {
     result = result.replace(new RegExp("\{"+key+"\}", "g"), data[key]);
