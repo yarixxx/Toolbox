@@ -3,10 +3,16 @@
  * 
  * @constructor
  * @param template {String}
- * @returns {Cart.Template}
  */
 
 Template = function(template) {
+  this._tpl = template;
+};
+
+/**
+ * @param template {String}
+ */
+Template.prototype.setTpl = function(template) {
   this._tpl = template;
 };
 
