@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <title>Test loader</title>
+  <script src="src/Deferred.js"></script>
+  <script src="src/DomFileHandler.js"></script>
+  <script src="src/UseDOM.js"></script>
+  <script src="src/BeanLoader.js"></script>
+  <script>
+    window.addEventListener("load", function() {
+      var useDom = new UseDOM();
+      var fileHandler = new DomFileHandler(useDom);
+      var beanLoader = new BeanLoader();
+      beanLoader.setFileHandler(fileHandler);
+      beanLoader.loadBean("MyModel", function(instance) {
+          console.log(instance);
+      });
+
+    });
+  </script>
+</head>
+<body>
+
+<article>
+    <section>
+        <h2></h2>
+        <table>
+        </table>
+    </section>
+
+</article>
+
+</body>
+</html>
