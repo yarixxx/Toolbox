@@ -1,6 +1,7 @@
 function MyView(selector) {
   this.selector = selector;
   this.domProvider = null;
+  this.myModel = null;
 }
 
 /**
@@ -13,4 +14,12 @@ MyView.prototype.setDomProvider = function(domProvider) {
 
 MyView.prototype.update = function(data) {
   this.domProvider.putValue(this.selector, data);
+}
+
+MyView.prototype.setMyModel = function(model) {
+  this.myModel = model;
+}
+
+MyView.prototype.getDependencies = function() {
+  return ["MyModel"];
 }
