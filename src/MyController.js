@@ -1,5 +1,5 @@
-function MyController(model) {
-  this.model = model;
+function MyController() {
+  this.model = null;
   this.dateProvider = null;
 }
 
@@ -17,4 +17,12 @@ MyController.prototype.run = function(interval) {
 
 MyController.prototype.stop = function(interval) {
   clearInterval(this.timer);
+}
+
+MyController.prototype.setMyModel = function(model) {
+  this.model = model;
+}
+
+MyController.prototype.getDependencies = function() {
+  return ["MyModel"];
 }
