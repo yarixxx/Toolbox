@@ -4,14 +4,16 @@ function BeanLoader() {
 }
 
 BeanLoader.prototype._getBean = function(beanName, callback){
-  this._fileHandler.loadFile(beanName, function() {
+  this._fileHandler.loadFile(beanName, this._loadFileCallback.bind(this, beanName, callback));
+}
+
+BeanLoader.prototype._loadFileCallback = function(beanName, callback) {
     var beanInstance = new Function("return new " + beanName + "();")();
     this._loadedBeans[beanName] = beanInstance;
     this.loadDependencies(beanInstance);
     if (callback) {
-      callback(beanInstance);
+        callback(beanInstance);
     }
-  }.bind(this));
 }
 
 BeanLoader.prototype.loadDependencies = function(beanInstance){
